@@ -1,0 +1,31 @@
+[server]
+address= ["::","0.0.0.0"]
+port=8080
+
+[database]
+url = "postgres://rust:rust@pghost:5432/rust?sslmode=require"
+
+[jwt]
+ttl = 86400
+
+
+#[[modules]]
+#name = "api"
+#enabled = true
+#address = ["1.2.3.4"]
+#port = 8081
+#secret = "SomethingVerySecret"
+#
+#[[modules]]
+#name = "admin"
+#enabled = true
+#address = ["5.6.7.8"]
+#port = 8082
+#secret = "SomethingSickSecret"
+#
+#[[modules]]
+#name = "users"
+#enabled = true
+#address = ["8.9.9.1"]
+#port = 8083
+#secret = "SomethingUsersSecret"
