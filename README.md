@@ -68,8 +68,41 @@ memory allocation of 45245844576 bytes failed
 Aborted (core dumped)
 /app # 
 ```
+**On alpine this doesnt print help**
+```bash
+/app # ldd gcore 
+	/lib64/ld-linux-x86-64.so.2 (0x7fd68fb33000)
+	libc.so.6 => /lib64/ld-linux-x86-64.so.2 (0x7fd68fb33000)
+	ld-linux-x86-64.so.2 => /lib/ld-linux-x86-64.so.2 (0x7fd68fa6e000)
+	libpthread.so.0 => /lib64/ld-linux-x86-64.so.2 (0x7fd68fb33000)
+	libgcc_s.so.1 => /usr/lib/libgcc_s.so.1 (0x7fd68fa54000)
+	libdl.so.2 => /lib64/ld-linux-x86-64.so.2 (0x7fd68fb33000)
+/app # ./gcore -h
+Value of config set: /etc/gurita/gurita.toml
+/app # ./gcore -h
+Segmentation fault (core dumped)
+```
 
-This doesn't happen on debian:10-slim
+**This doesn't happen on debian:10-slim**
+```bash
+root@e6c01e911502:/app# ./gcore -h
+gurita 0.1.0
+GURITA
+
+USAGE:
+    gcore [FLAGS] [OPTIONS]
+
+FLAGS:
+    -d               Run as daemon
+    -h, --help       Prints help information
+    -v               Sets the level of verbosity (-v -vv -vvv)
+    -V, --version    Prints version information
+
+OPTIONS:
+    -c, --config <FILE>    Sets custom conifg file. [default: /etc/gurita/gurita.toml]
+    -p, --port <PORT>      Set listen port
+
+```
 
 **full output from building image wihtout using cache**
 ```bash
